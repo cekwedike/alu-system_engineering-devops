@@ -6,8 +6,8 @@ sudo apt install haproxy -y
 load_balance_config=\
 "backend my_servers
         balance roundrobin
-        server 4808-web-01 54.163.68.20:80
-        server 4808-web-02 54.226.116.83:80
+        server 5797-web-01 3.89.162.121:80
+        server 5797-web-02 54.235.50.76:80
 frontend haproxy_inbound
         bind *:80
         default_backend my_servers
