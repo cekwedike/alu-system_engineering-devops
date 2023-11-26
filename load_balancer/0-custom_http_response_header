@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# A program that install nginx and configure it with custom header.
+sudo apt update -y
+sudo apt install nginx -y
+# store new_config with custom header
+host_name="$HOSTNAME"
+new_config=\
+"server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+               root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        add_header X-Served-By $host_name;
+}
+"
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
+echo "$new_config" > /etc/nginx/sites-available/default
+sudo service nginx restart
