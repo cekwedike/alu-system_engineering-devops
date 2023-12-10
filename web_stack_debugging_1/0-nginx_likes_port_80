@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# fix the bug on server to make it listen on port 80
+sed -i 's/ipv6only=on//' /etc/nginx/sites-available/default
+
+# create symbolic link
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
