@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# a script to run commands from the root user as another user.
+sudo -u "$1" whoami
+# runuser -u "$1" whoami
